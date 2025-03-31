@@ -1,0 +1,271 @@
+﻿<Window x:Class="Saliya_auto_care_Cashier.Loginpage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Saliya_auto_care_Cashier"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        WindowState="Maximized"
+        WindowStyle="None"
+        ResizeMode="NoResize" Height="751" Width="1223">
+
+    <Grid Background="WhiteSmoke" >
+
+
+        <!-- Add column definitions to divide the Grid into two columns -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="535*" />
+            <ColumnDefinition Width="233*"/>
+            <ColumnDefinition Width="455*" />
+        </Grid.ColumnDefinitions>
+
+
+
+        <Image Source="Images/car-repair-maintenance-services-garage_981948-9673.png" Stretch="UniformToFill" Opacity="0.8" Grid.ColumnSpan="3">
+            <Image.Effect>
+                <BlurEffect Radius="20"/>
+            </Image.Effect>
+        </Image>
+
+        <!-- Left side content (Checklist or any other content) -->
+        <StackPanel Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="50,0,0,0" Height="39" Width="271">
+            <!-- You can add your checklist or other elements here -->
+            <!-- You can add your checklist or other elements here -->
+            <!-- You can add your checklist or other elements here -->
+        </StackPanel>
+
+        <Grid Grid.Column="2" Background="Black" Opacity="0.7">
+
+            <!-- Right side (Password box and keypad) -->
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,90,0,0" Height="631" Width="406">
+                <!-- Pin Code Label -->
+                <TextBlock FontWeight="Bold" Foreground="White" TextAlignment="Center" Text="Enter your Pin" FontSize="30" FontFamily="Arial" Height="61" Margin="0,0,0,20" />
+
+                <!-- Password Box -->
+                <Border CornerRadius="10" Background="White" BorderBrush="LightGray" BorderThickness="2" Height="70" Width="240" HorizontalAlignment="Center" Margin="0,0,0,20">
+                    <PasswordBox x:Name="txtPasswordInput" 
+                 Background="Transparent" 
+                 FontSize="50" 
+                 VerticalContentAlignment="Center" 
+                 HorizontalContentAlignment="Center" 
+                 VerticalAlignment="Top" 
+                 HorizontalAlignment="Center" 
+                 PasswordChar="●" 
+                 Cursor="IBeam" 
+                
+                  Height="66" Margin="0,2,0,0"/>
+                </Border>
+
+
+                <!-- Keypad -->
+                <Grid HorizontalAlignment="Center" Height="307">
+                    <Grid.Resources>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Width" Value="74"/>
+                            <Setter Property="Height" Value="60"/>
+                            <Setter Property="FontSize" Value="35"/>
+                            <Setter Property="Background" Value="White"/>
+                            <Setter Property="BorderBrush" Value="Gray"/>
+                            <Setter Property="BorderThickness" Value="1"/>
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="HorizontalAlignment" Value="Center"/>
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border Background="{TemplateBinding Background}" 
+                                            BorderBrush="{TemplateBinding BorderBrush}" 
+                                            BorderThickness="{TemplateBinding BorderThickness}" 
+                                            CornerRadius="10" x:Name="border"
+                                            RenderTransformOrigin="0.5,0.5">
+                                            <Border.RenderTransform>
+                                                <ScaleTransform x:Name="scaleTransform" ScaleX="1" ScaleY="1" />
+                                            </Border.RenderTransform>
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <EventTrigger RoutedEvent="ButtonBase.Click">
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <ColorAnimation Storyboard.TargetName="border"
+                                                                    Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                                    To="LightBlue" Duration="0:0:0.2" AutoReverse="True"/>
+
+                                                        <ColorAnimation Storyboard.TargetName="border"
+                                                                        Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                                        To="White" BeginTime="0:0:0.4" Duration="0:0:0.1"/>
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </EventTrigger>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Trigger.EnterActions>
+                                                    <BeginStoryboard>
+                                                        <Storyboard>
+                                                            <DoubleAnimation Storyboard.TargetName="scaleTransform"
+                                                                         Storyboard.TargetProperty="ScaleX"
+                                                                         To="1.05" Duration="0:0:0.2" />
+                                                            <DoubleAnimation Storyboard.TargetName="scaleTransform"
+                                                                         Storyboard.TargetProperty="ScaleY"
+                                                                         To="1.05" Duration="0:0:0.2" />
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+                                                </Trigger.EnterActions>
+                                                <Trigger.ExitActions>
+                                                    <BeginStoryboard>
+                                                        <Storyboard>
+                                                            <DoubleAnimation Storyboard.TargetName="scaleTransform"
+                                                                         Storyboard.TargetProperty="ScaleX"
+                                                                         To="1.0" Duration="0:0:0.2" />
+                                                            <DoubleAnimation Storyboard.TargetName="scaleTransform"
+                                                                         Storyboard.TargetProperty="ScaleY"
+                                                                         To="1.0" Duration="0:0:0.2" />
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+                                                </Trigger.ExitActions>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Grid.Resources>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Keypad buttons -->
+                    <Button Grid.Row="0" Grid.Column="0" Content="1" Margin="5" Name="btn1" Click="btn1_Click"/>
+                    <Button Grid.Row="0" Grid.Column="1" Content="2" Margin="5" Name="btn2" Click="btn2_Click"/>
+                    <Button Grid.Row="0" Grid.Column="2" Content="3" Margin="5" Name="btn3" Click="btn3_Click"/>
+                    <Button Grid.Row="1" Grid.Column="0" Content="4" Margin="5" Name="btn4" Click="btn4_Click"/>
+                    <Button Grid.Row="1" Grid.Column="1" Content="5" Margin="5" Name="btn5" Click="btn5_Click"/>
+                    <Button Grid.Row="1" Grid.Column="2" Content="6" Margin="5" Name="btn6" Click="btn6_Click"/>
+                    <Button Grid.Row="2" Content="7" Margin="0,0,0,5" Name="btn7" VerticalAlignment="Bottom" Click="btn7_Click"/>
+                    <Button Grid.Row="2" Grid.Column="1" Content="8" Margin="5" Name="btn8" Click="btn8_Click"/>
+                    <Button Grid.Row="2" Grid.Column="2" Content="9" Margin="5" Name="btn9" Click="btn9_Click"/>
+                    <Button Grid.Row="3" Grid.Column="1" Content="0" Margin="5" Name="btn0" Click="btn0_Click"/>
+                    <Button Grid.Row="3" Grid.Column="2" Content="C" Margin="5" Name="btnPwdClear" Click="btnPwdClear_Click"/>
+                    <Button Grid.Row="3" Grid.Column="0" Content="&lt;&lt;" Margin="5" Name="btn12" Click="btn12_Click"/>
+                </Grid>
+                <Button x:Name="btnLogin" Background="#7CFC00" BorderBrush="Gray" BorderThickness="1" Padding="20" Height="132" Click="btnLogin_Click" RenderTransformOrigin="0.5,0.5" Width="138">
+                    <Button.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform AngleY="0.978"/>
+                            <RotateTransform/>
+                            <TranslateTransform Y="1.109"/>
+                        </TransformGroup>
+                    </Button.RenderTransform>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Background="{TemplateBinding Background}" 
+                 BorderBrush="{TemplateBinding BorderBrush}" 
+                 BorderThickness="{TemplateBinding BorderThickness}" 
+                 CornerRadius="100" x:Name="border"
+                 RenderTransformOrigin="0.5,0.5">
+                                <Border.RenderTransform>
+                                    <ScaleTransform x:Name="scaleTransform" ScaleX="1" ScaleY="1" />
+                                </Border.RenderTransform>
+
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <EventTrigger RoutedEvent="ButtonBase.Click">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetName="border"
+                                         Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                         To="GreenYellow" Duration="0:0:0.3" AutoReverse="True"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+
+
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Trigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetName="scaleTransform"
+                          Storyboard.TargetProperty="ScaleX"
+                          To="1.1" Duration="0:0:0.2" />
+                                                <DoubleAnimation Storyboard.TargetName="scaleTransform"
+                          Storyboard.TargetProperty="ScaleY"
+                          To="1.1" Duration="0:0:0.2" />
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.EnterActions>
+
+                                    <Trigger.ExitActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetName="scaleTransform"
+                          Storyboard.TargetProperty="ScaleX"
+                          To="1.0" Duration="0:0:0.2" />
+                                                <DoubleAnimation Storyboard.TargetName="scaleTransform"
+                          Storyboard.TargetProperty="ScaleY"
+                          To="1.0" Duration="0:0:0.2" />
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.ExitActions>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+
+                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Image Source="/Images/checkmark-512.png" Width="50" Height="100"/>
+
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </Grid>
+        <TextBlock Text="Welcome To SaliyaAutoCare" FontSize="30" FontWeight="Bold" Foreground="White" HorizontalAlignment="Right" Margin="130,80,0,0"/>
+        <TextBlock Text="Select user" FontSize="30" FontWeight="DemiBold" Foreground="White" Margin="50,190,321,500"/>
+        <Grid Margin="50,270,60,220">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <materialDesign:Card UniformCornerRadius="10" 
+                             Background="{DynamicResource MaterialDesignPaper}"
+                             Margin="0,10,0,10"
+                             materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="27" FontWeight="Bold">
+                    Ryan Carter
+                </TextBlock>
+            </materialDesign:Card>
+
+            <materialDesign:Card UniformCornerRadius="10" 
+                             Background="{DynamicResource MaterialDesignPaper}"
+                             Margin="0,10,0,10"
+                             materialDesign:ShadowAssist.ShadowDepth="Depth3" Grid.Row="1">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="27" FontWeight="Bold">
+                    Emma Blake
+                </TextBlock>
+            </materialDesign:Card>
+
+            <materialDesign:Card UniformCornerRadius="10" 
+                             Background="{DynamicResource MaterialDesignPaper}"
+                             Margin="0,10,0,10"
+                             materialDesign:ShadowAssist.ShadowDepth="Depth3" Grid.Row="2">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="27" FontWeight="Bold">
+                    Logan Reed
+                </TextBlock>
+            </materialDesign:Card>
+
+        </Grid>
+    </Grid>
+</Window>
+

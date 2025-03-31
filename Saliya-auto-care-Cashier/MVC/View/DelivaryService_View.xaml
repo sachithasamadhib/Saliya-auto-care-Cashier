@@ -1,0 +1,71 @@
+﻿<UserControl x:Class="Saliya_auto_care_Cashier.MVVM.View.DelivaryService_View"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Saliya_auto_care_Cashier.MVVM.View"
+             xmlns:gmap="clr-namespace:GMap.NET.WindowsPresentation;assembly=GMap.NET.WindowsPresentation"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d">
+    <Grid>
+        <materialDesign:Card UniformCornerRadius="15" 
+                             Background="White"
+                             Margin="0,-3,0,-2"
+                             materialDesign:ShadowAssist.ShadowDepth="Depth3">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                     <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Border CornerRadius="10" Background="LightGray" Margin="15,15,0,25">
+                                <Grid Margin="8,8,8,8">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <Button x:Name="OverviewButton" 
+                                            Width="135" 
+                                            Height="45" 
+                                            Style="{StaticResource ToggleButtonStyle}"
+                                            Background="White"
+                                            Click="OverviewButton_Click"
+                                            Content="Overviews"/>
+
+                                    <Button x:Name="MessageButton"
+                                            Width="135" 
+                                            Height="45"
+                                            Style="{StaticResource ToggleButtonStyle}"
+                                            Grid.Column="1"
+                                            Click="MessageButton_Click"
+                                            Content="Messages"/>
+                                </Grid>
+                            </Border>
+                     </Grid>
+
+                    <Grid Grid.Column="1">
+                        <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center">
+                            <Button Margin="0,-15,40,0" Background="#5c77d6" Width="180" Height="45" Foreground="White" FontSize="17" FontWeight="Bold" Click="btn_pickupclick"> 
+                                + Schedule Pickup
+                            </Button>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Border Margin="5,-25,5,-5" BorderThickness="1">
+                        <Frame Name="Container"/> 
+                    </Border>
+                </Grid>
+            </Grid>
+        </materialDesign:Card>
+    </Grid>
+</UserControl>
